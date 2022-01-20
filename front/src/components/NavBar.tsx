@@ -15,13 +15,13 @@ const NavBar = () => {
   return (
     <div>
       <div ref={mySidenav} id="mySidenav" className="sidenav">
-        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
+        <span className="closebtn" onClick={closeNav}>
           &times;
-        </a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        </span>
+        <span>About</span>
+        <span>Services</span>
+        <span>Clients</span>
+        <span>Contact</span>
       </div>
       {/* // Use any element to open the sidenav */}
       <span onClick={openNav}>open</span>
