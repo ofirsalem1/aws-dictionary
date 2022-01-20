@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 // Routers
 const { wordsRouter } = require('./routes/wordsRouter');
-
+const { partOfSpeech } = require('./routes/partOfSpeech');
+app.use('/part-of-speech', partOfSpeech);
 app.use('/', wordsRouter);
 
 app.get('/', function (req, res) {
