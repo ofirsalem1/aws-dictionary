@@ -32,12 +32,12 @@ const Word = () => {
   const handleChange = (event: any) => {
     setPos(event.target.value);
   };
-  console.log(pos === '');
 
   return (
     <div>
       <h2>Search By Word</h2>
       <input
+        className="search-input"
         type="text"
         placeholder="Search Word..."
         onChange={e => setSearchInput(e.target.value)}
@@ -66,7 +66,9 @@ const Word = () => {
       </FormControl>
 
       <br />
-      <button onClick={() => getWord(searchInput)}>Search</button>
+      <button className="btn-search" onClick={() => getWord(searchInput)}>
+        Search
+      </button>
       {!wordDefinition && (
         <div>
           <span className="loader"> </span>
