@@ -9,6 +9,10 @@ body {
   background-color: black;
   color: white;
 }
+.definition-div {
+  margin: 1rem;
+}
+
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */

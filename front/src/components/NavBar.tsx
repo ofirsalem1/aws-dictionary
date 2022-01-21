@@ -18,11 +18,46 @@ const NavBar = () => {
         <span className="closebtn" onClick={closeNav}>
           &times;
         </span>
-        <span onClick={() => navigate('/')}>Home</span>
-        <span>Word</span>
-        <span>Word With Pos</span>
-        <span>Random Word Pos</span>
-        <span>Random Word Pos With Letter</span>
+        <span
+          onClick={() => {
+            navigate('/');
+            closeNav();
+          }}
+        >
+          Home
+        </span>
+        <span
+          onClick={() => {
+            navigate('/word/welcome');
+            closeNav();
+          }}
+        >
+          Word
+        </span>
+        <span
+          onClick={() => {
+            navigate('/word-with-pos');
+            closeNav();
+          }}
+        >
+          Word With Pos
+        </span>
+        <span
+          onClick={() => {
+            navigate('/random-word-pos');
+            closeNav();
+          }}
+        >
+          Random Word Pos
+        </span>
+        <span
+          onClick={() => {
+            navigate('/random-word-pos-start-with');
+            closeNav();
+          }}
+        >
+          Random Word Pos With Letter
+        </span>
       </div>
       {/* // Use any element to open the sidenav */}
       <span className="open-nav" onClick={openNav}>
