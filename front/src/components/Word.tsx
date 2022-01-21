@@ -14,8 +14,9 @@ const Word = () => {
   }, []);
 
   const getWord = async (searchWord: string) => {
-    const response = await axios.get(`http://localhost:3000/${searchWord}`);
-    navigate(`/word/${searchWord}`);
+    const wordWithoutDot = searchWord.replace(/[^a-zA-Z ]/g, '');
+    const response = await axios.get(`http://localhost:3000/${wordWithoutDot}`);
+    navigate(`/word/${wordWithoutDot}`);
     setWordDefinition(response.data);
   };
   return (
@@ -27,6 +28,11 @@ const Word = () => {
         onChange={e => setSearchInput(e.target.value)}
       />
       <button onClick={() => getWord(searchInput)}>Search</button>
+      {!wordDefinition && (
+        <div>
+          <span className="loader"> </span>
+        </div>
+      )}
       {wordDefinition &&
         wordDefinition.map((word: any, i: number) => {
           return (
