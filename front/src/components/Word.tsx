@@ -40,7 +40,11 @@ const Word = () => {
                   <p key={i}>
                     {i + 1}:
                     {definitionArr.map((definitionWord: string, i: number) => {
-                      return <span key={i}>{definitionWord} </span>;
+                      return (
+                        <span key={i} onClick={() => getWord(definitionWord)}>
+                          {definitionWord}{' '}
+                        </span>
+                      );
                     })}
                   </p>
                 );
