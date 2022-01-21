@@ -3,7 +3,7 @@ import React from 'react';
 const WordWithPos = () => {
   return (
     <div>
-      <h2>Word With Pos</h2>
+      <h2>Search Word With Pos</h2>
     </div>
   );
 };

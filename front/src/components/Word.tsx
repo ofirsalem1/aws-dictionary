@@ -1,8 +1,13 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const Word = () => {
+  const [pos, setPos] = useState('');
   const navigate = useNavigate();
   const [wordDefinition, setWordDefinition] = useState<[Object] | null>(null);
   const { word } = useParams();
@@ -15,10 +20,20 @@ const Word = () => {
 
   const getWord = async (searchWord: string) => {
     const wordWithoutDot = searchWord.replace(/[^a-zA-Z ]/g, '');
-    const response = await axios.get(`http://localhost:3000/${wordWithoutDot}`);
+    let response;
+    if (pos === '') {
+      response = await axios.get(`http://localhost:3000/${wordWithoutDot}`);
+    } else {
+      response = await axios.get(`http://localhost:3000/${wordWithoutDot}/${pos}`);
+    }
     navigate(`/word/${wordWithoutDot}`);
     setWordDefinition(response.data);
   };
+  const handleChange = (event: any) => {
+    setPos(event.target.value);
+  };
+  console.log(pos === '');
+
   return (
     <div>
       <h2>Search By Word</h2>
@@ -27,6 +42,30 @@ const Word = () => {
         placeholder="Search Word..."
         onChange={e => setSearchInput(e.target.value)}
       />
+      <br />
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <FormHelperText>Choose Part Of Speech</FormHelperText>
+        <Select
+          value={pos}
+          onChange={handleChange}
+          displayEmpty
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={'adjectives'}>Adjectives</MenuItem>
+          <MenuItem value={'adverbs'}>Adverbs</MenuItem>
+          <MenuItem value={'interjections'}>Interjections</MenuItem>
+          <MenuItem value={'nouns'}>Nouns</MenuItem>
+          <MenuItem value={'verbs'}>Verbs</MenuItem>
+          <MenuItem value={'pronouns'}>Pronouns</MenuItem>
+          <MenuItem value={'prepositions'}>Prepositions</MenuItem>
+          <MenuItem value={'conjunctions'}>Conjunctions</MenuItem>
+        </Select>
+      </FormControl>
+
+      <br />
       <button onClick={() => getWord(searchInput)}>Search</button>
       {!wordDefinition && (
         <div>
