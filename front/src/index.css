@@ -31,6 +31,7 @@ body {
   color: #818181;
   display: block;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -45,6 +46,10 @@ body {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+.open-nav {
+  margin-right: 100%;
+  cursor: pointer;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
