@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Word = () => {
   const [pos, setPos] = useState('');
@@ -28,6 +30,17 @@ const Word = () => {
       response = await axios.get(`http://localhost:3000/${wordWithoutDot}/${pos}`);
     }
     navigate(`/word/${wordWithoutDot}`);
+    if (response.data.length === 0) {
+      toast.error('The word does not exist !', {
+        position: 'top-right',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
     setWordDefinition(response.data);
   };
   const handleChange = (event: any) => {
@@ -106,6 +119,7 @@ const Word = () => {
             </div>
           );
         })}
+      <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} rtl={false} />
     </div>
   );
 };

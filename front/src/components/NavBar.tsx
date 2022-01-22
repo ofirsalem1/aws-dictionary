@@ -43,14 +43,14 @@ const NavBar = () => {
         >
           Random Word Pos
         </span>
-        <span
+        {/* <span
           onClick={() => {
             navigate('/random-word-pos-start-with');
             closeNav();
           }}
         >
           Random Word Pos With Letter
-        </span>
+        </span> */}
       </div>
       {/* // Use any element to open the sidenav */}
       <span className="open-nav" onClick={openNav}>
