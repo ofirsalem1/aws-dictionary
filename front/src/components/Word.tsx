@@ -19,6 +19,7 @@ const Word = () => {
   }, []);
 
   const getWord = async (searchWord: string) => {
+    setWordDefinition(null);
     const wordWithoutDot = searchWord.replace(/[^a-zA-Z ]/g, '');
     let response;
     if (pos === '') {
