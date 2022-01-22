@@ -2,15 +2,17 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
-  const mySidenav: any = useRef();
+  const mySidenav = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  /* Set the width of the side navigation to 250px */
   const openNav = () => {
-    mySidenav.current.style.width = '250px';
+    if (mySidenav.current !== null) {
+      mySidenav.current.style.width = '250px';
+    }
   };
-  /* Set the width of the side navigation to 0 */
   const closeNav = () => {
-    mySidenav.current.style.width = '0';
+    if (mySidenav.current !== null) {
+      mySidenav.current.style.width = '0';
+    }
   };
   return (
     <div>
