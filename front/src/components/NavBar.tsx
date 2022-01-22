@@ -34,17 +34,10 @@ const NavBar = () => {
         >
           Word
         </span>
+
         <span
           onClick={() => {
-            navigate('/word-with-pos');
-            closeNav();
-          }}
-        >
-          Word With Pos
-        </span>
-        <span
-          onClick={() => {
-            navigate('/random-word-pos');
+            navigate('/random-word-pos/conjunctions');
             closeNav();
           }}
         >

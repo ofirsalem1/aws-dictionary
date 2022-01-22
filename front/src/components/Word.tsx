@@ -37,39 +37,45 @@ const Word = () => {
   return (
     <div>
       <h2>Search By Word</h2>
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Search Word..."
-        onChange={e => setSearchInput(e.target.value)}
-      />
-      <br />
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <FormHelperText>Choose Part Of Speech</FormHelperText>
-        <Select
-          value={pos}
-          onChange={handleChange}
-          displayEmpty
-          inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={'adjectives'}>Adjectives</MenuItem>
-          <MenuItem value={'adverbs'}>Adverbs</MenuItem>
-          <MenuItem value={'interjections'}>Interjections</MenuItem>
-          <MenuItem value={'nouns'}>Nouns</MenuItem>
-          <MenuItem value={'verbs'}>Verbs</MenuItem>
-          <MenuItem value={'pronouns'}>Pronouns</MenuItem>
-          <MenuItem value={'prepositions'}>Prepositions</MenuItem>
-          <MenuItem value={'conjunctions'}>Conjunctions</MenuItem>
-        </Select>
-      </FormControl>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          getWord(searchInput);
+        }}
+      >
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search Word..."
+          onChange={e => setSearchInput(e.target.value)}
+          required
+        />
+        <br />
+        <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <FormHelperText>Choose Part Of Speech</FormHelperText>
+          <Select
+            value={pos}
+            onChange={handleChange}
+            displayEmpty
+            inputProps={{ 'aria-label': 'Without label' }}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={'adjectives'}>Adjectives</MenuItem>
+            <MenuItem value={'adverbs'}>Adverbs</MenuItem>
+            <MenuItem value={'interjections'}>Interjections</MenuItem>
+            <MenuItem value={'nouns'}>Nouns</MenuItem>
+            <MenuItem value={'verbs'}>Verbs</MenuItem>
+            <MenuItem value={'pronouns'}>Pronouns</MenuItem>
+            <MenuItem value={'prepositions'}>Prepositions</MenuItem>
+            <MenuItem value={'conjunctions'}>Conjunctions</MenuItem>
+          </Select>
+        </FormControl>
 
-      <br />
-      <button className="btn-search" onClick={() => getWord(searchInput)}>
-        Search
-      </button>
+        <br />
+        <button className="btn-search">Search</button>
+      </form>
       {!wordDefinition && (
         <div>
           <span className="loader"> </span>
