@@ -2,6 +2,7 @@ body {
   background: #2c3e50;
   text-align: center;
   color: white;
+  font-size: 1.5rem;
 }
 .header {
   font-family: 'Arial Black', sans-serif;
@@ -9,6 +10,13 @@ body {
   letter-spacing: -1px;
   background-color: black;
   color: white;
+}
+ul {
+  text-align: left;
+  list-style-type: circle;
+}
+li {
+  margin-top: 1rem;
 }
 .definition-div {
   margin: 1rem;
@@ -21,7 +29,7 @@ body {
   padding-right: 20px;
   padding-left: 20px;
   width: 120px;
-  font-size: inherit;
+  font-size: 1rem;
 }
 .btn-search {
   cursor: pointer;
