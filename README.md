@@ -1,6 +1,6 @@
 # Search by word
 
-![Searchbyword](/screenshots/search-by-word.png)
+![Search by word](/screenshots/search-by-word.png)
 
 # Search by word and pos
 
